@@ -1,0 +1,35 @@
+version: '3'
+services: 
+    frontend:
+        build: ./frontend
+        image: restdockertemplatefrontend
+        ports: 
+            - 80:80
+        depends_on: 
+            - backend     
+    backend:
+        build: ./backend
+        image: restdockertemplatebackend  
+        expose: # so not visible expect for docker containers
+            - 3000
+        environment: 
+            - WAIT_HOSTS=db:3306 # Waits 30s for the mySQL Server to be set up, See: https://github.com/ufoscout/docker-compose-wait
+            - DATABASE_HOST=db # db resovled by Docker network
+            - DATABASE_USER=express
+            - DATABASE_PW=SuperSecret!
+            - DATABASE=restdockertemplate
+        depends_on: 
+            - db    
+    db: 
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password # insted of the default caching_sha2_password 
+        environment: # deployment -> move to docker secrets
+            MYSQL_ROOT_PASSWORD: SomeRootPassword!
+            MYSQL_DATABASE: restdockertemplate
+            MYSQL_USER: express
+            MYSQL_PASSWORD: SuperSecret!
+        volumes: # load setup configuration file 
+            - ./database/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+            - ./database/db-data/:/var/lib/mysql
+        expose: # so not visible expect for docker containers
+            - 3306    
