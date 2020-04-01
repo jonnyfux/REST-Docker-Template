@@ -45,10 +45,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 #### Development server
 Run `npm run startDev` for a dev server. The server will automatically be restarted if you change any of the source files.
 
-## App
+## Starting the app
 
-To be able to run the app the only prerequisition is that Docker ist installed locally. After its installed sucessfully, run the following two comands in the root directory of this project: 
-1. Run `docker-compose build`
-2. Run `docker-comose up` 
+### Prerequisitions
+- install Docker (https://docs.docker.com/install/)
+- install Docker-Compose (https://docs.docker.com/compose/install/)
+
+### Building and running the app
+1. Navigate to the root folder of this project
+2. Execute `docker-compose build` and then 
+3. Execute `docker-comose up` in your terminal 
 
 The app will be available under http://localhost:80 in your web-browser. The backend and the database are not exposed to the outside of the docker network. 
