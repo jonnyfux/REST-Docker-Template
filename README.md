@@ -25,7 +25,7 @@ I hope this setup will help some people to get started with their own Web-App. S
 ### Prerequisite
 
 - Install Docker (https://docs.docker.com/get-docker/), Docker-Compose (https://docs.docker.com/compose/install/)
-- To verify that everything has been installed correctly run {docker,docker-compose} -v. You should the version number e.g. Docker version 19.03.6
+- To verify that everything has been installed correctly run {docker,docker-compose} -v. You should see the version number e.g. Docker version 19.03.6
 
 ### Starting the app
 
