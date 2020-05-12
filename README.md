@@ -31,8 +31,9 @@ I hope this setup will help some people to get started with their own Web-App. S
 
 - Run `cd backend && npm i`. Then navigate back to the root folder. (Necessary for hot reloading of the backend, because of the usage of Docker Volumes)
 - Run `docker-compose build`
-- Run `docker-comose up` or `docker-comose up -d` (https://docs.docker.com/compose/reference/up/)
-- In a separate terminal (or the same if you ran docker-compose up -d) Run `cd frontend && npm run startDev`
+- Run `docker-compose up` or `docker-compose up -d` (https://docs.docker.com/compose/reference/up/)
+- In a separate terminal (or the same if you ran docker-compose up -d) 
+- Run `cd frontend && npm i && npm run startDev`
 
 After everything started without errors you should see the app under 'http://localhost:4200/'. Note this setup is intended for developing purposes only!
 
