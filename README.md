@@ -3,7 +3,7 @@ Since I just started with REST development, I found it quite challenging to get 
 
 This setup is mainly intended for development, but with some changes, it can be used for development as well (see below). It features hot reloading for the Angular Frontend (= if you make changes the Web-App will be reloaded automatically) and the backend (in this case you have to manually reload the page). All the different components (Frontend, Backend, Database) are set up through Docker-Compose which makes it easy and fast to start developing. It also ensures that this is usable in any developing environment. The components are connected through an Nginx-Server which is used as a 'Reverse Proxy' here (read more: https://www.nginx.com/resources/glossary/reverse-proxy-server/). 
 
-I hope this setup will help some people to get started with their own Web-App. Since I’m still learning, I’m glad for any feedback or improvements through Issues! 
+I hope this setup will help some people to get started with their own Web-App. Since I’m still learning, I’m glad for any feedback or improvements through Issues! If this template helped you I would appreciate a star ;)
 
 ## Technologies 
 
