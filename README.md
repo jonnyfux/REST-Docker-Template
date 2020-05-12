@@ -13,7 +13,7 @@ I hope this setup will help some people to get started with their own Web-App. S
 - node.js (https://nodejs.org/) in combination with the 
 - express framework (https://expressjs.com/)
 ### Database 
-- MySql (mysql.com)
+- MySql (https://www.mysql.com/)
 ### Network
 - Nginx (https://www.nginx.com/)
 
