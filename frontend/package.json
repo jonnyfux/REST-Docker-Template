@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "startDev": "ng serve --public-host http://localhost",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

@@ -12,6 +12,8 @@ services:
         image: restdockertemplatebackend  
         expose: # so not visible expect for docker containers
             - 3000
+        volumes: 
+            - ./backend:/usr/src/app     
         environment: 
             - WAIT_HOSTS=db:3306 # Waits 30s for the mySQL Server to be set up, See: https://github.com/ufoscout/docker-compose-wait
             - DATABASE_HOST=db # db resovled by Docker network

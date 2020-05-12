@@ -1,5 +1,9 @@
 # REST Docker Template
-Since I just started with REST development, I found it quite challenging to get a development environment up and running. After many unexpected errors, I came up with this setup, which includes a Frontend, Backend, and Database. All which is connected and build with docker-compose. I hope this setup will help some people to get started with their own Web-App. Since I’m still learning, I’m glad for any feedback or improvements! 
+Since I just started with REST development, I found it quite challenging to get a development environment up and running. After many unexpected errors, I came up with this setup, which includes a Frontend, Backend, and Database.
+
+This setup is mainly intended for development, but with some changes, it can be used for development as well (see below). It features hot reloading for the Angular Frontend (= if you make changes the Web-App will be reloaded automatically) and the backend (in this case you have to manually reload the page). All the different components (Frontend, Backend, Database) are set up through Docker-Compose which makes it easy and fast to start developing. It also ensures that this is usable in any developing environment. The components are connected through an Nginx-Server which is used as a 'Reverse Proxy' here (read more: https://www.nginx.com/resources/glossary/reverse-proxy-server/). 
+
+I hope this setup will help some people to get started with their own Web-App. Since I’m still learning, I’m glad for any feedback or improvements through Issues! 
 
 ## Technologies 
 
@@ -10,50 +14,32 @@ Since I just started with REST development, I found it quite challenging to get 
 - express framework (https://expressjs.com/)
 ### Database 
 - MySql (mysql.com)
+### Network
+- Nginx (https://www.nginx.com/)
 
 ### Containerization & Orchastration 
 - Docker/ Docker Compose (https://docs.docker.com/)
 
-## Development 
+## How to get started (Development)
 
-### Frontend
-#### Development server
+### Prerequisite
 
-Run `ng serve | npm run startDev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Install Docker (https://docs.docker.com/get-docker/), Docker-Compose (https://docs.docker.com/compose/install/)
+- To verify that everything has been installed correctly run {docker,docker-compose} -v. You should the version number e.g. Docker version 19.03.6
 
-#### Code scaffolding
+### Starting the app
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Run `cd backend && npm i`. Then navigate back to the root folder. (Necessary for hot reloading of the backend, because of the usage of Docker Volumes)
+- Run `docker-compose build`
+- Run `docker-comose up` or `docker-comose up -d` (https://docs.docker.com/compose/reference/up/)
+- In a separate terminal (or the same if you ran docker-compose up -d) Run `cd frontend && npm run startDev`
 
-#### Build
+After everything started without errors you should see the app under 'http://localhost:4200/'. Note this setup is intended for developing purposes only!
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Changes for Deployment
 
-#### Running unit tests
+- In ./backend/Dockerfile replace 'CMD /wait && npm run startDev' with 'CMD /wait && npm start'
+- In ./frontend/nginx.conf comment out the 'Develop' part and comment in the 'Deployment part'. Now the Nginx-Server will serve the built frontend and not the live-version. 
+- Change the whole app to use Docker Swarm (https://docs.docker.com/engine/swarm/stack-deploy/). Alternatively, you could use Kubernetes (https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-#### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-#### Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-### Backend
-#### Development server
-Run `npm run startDev` for a dev server. The server will automatically be restarted if you change any of the source files.
-
-## Starting the app
-
-### Prerequisitions
-- install Docker (https://docs.docker.com/install/)
-- install Docker-Compose (https://docs.docker.com/compose/install/)
-
-### Building and running the app
-1. Navigate to the root folder of this project
-2. Execute `docker-compose build` and then 
-3. Execute `docker-comose up` in your terminal 
-
-The app will be available under http://localhost:80 in your web-browser. The backend and the database are not exposed to the outside of the docker network. 
