@@ -40,7 +40,7 @@ After everything started without errors you should see the app under 'http://loc
 ## Changes for Deployment
 
 - In `./backend/Dockerfile` replace `CMD /wait && npm run startDev` with `CMD /wait && npm start`
-- In `./frontend/nginx.conf` comment out the `Develop` part and comment in the `Deployment part`. Now the Nginx-Server will serve the built frontend and not the live-version. 
+- In `./frontend/nginx.conf` comment out the `Develop` part and comment in the `Deployment` part. Now the Nginx-Server will serve the built frontend and not the live-version. 
 - Change the whole app to use Docker Swarm (https://docs.docker.com/engine/swarm/stack-deploy/). Alternatively, you could use Kubernetes (https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/).
 
 
